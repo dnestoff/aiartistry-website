@@ -8,8 +8,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.purple,
-        secondary: colors.sky,
+        primary: colors.orange,
+        secondary: colors.teal,
+        background: {
+          DEFAULT: '#fdfaf6', // light mode background
+          dark: '#3c3a37',   // dark mode background
+        }
       },
       fontFamily: {
         sans: ["'Inter Variable'", ...defaultTheme.fontFamily.sans],
