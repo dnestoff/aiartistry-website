@@ -1,11 +1,7 @@
 # Menu
 
-## Pages
+## [Services](#)
+## [Case Studies](#)
+## [About](#)
+## [Newsletter](https://newsletter.aiartistry.io)
 
-- [Services](#)
-- [Porfolio](#)
-- [About us](#)
-- [Terms](/terms)
-- [Privacy](/privacy)
-
-## [Blog](/blog)
