@@ -1,12 +1,12 @@
 export const SITE = {
-  name: "Qwind",
+  name: "AI Artistry",
 
   title:
-    "Qwind — Free template for Qwik + Tailwind CSS to build your new website.",
+    "AI Artistry — Helping companies and teams accelerate their AI capabilities.",
   description:
-    "Qwind is a free and ready to start template to make your website using Qwik and Tailwind CSS.",
+    "AI Artistry provides consulting services, workshops and trainings for businesses to improve their use of AI tools.",
 
-  origin: "https://qwind.pages.dev",
+  origin: "https://aiartistry.io/",
   basePathname: "/",
   trailingSlash: true,
 };
