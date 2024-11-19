@@ -2,6 +2,6 @@
 
 ## [Services](#)
 ## [Case Studies](#)
-## [About](#)
+## [About](/about)
 ## [Newsletter](https://newsletter.aiartistry.io)
 
