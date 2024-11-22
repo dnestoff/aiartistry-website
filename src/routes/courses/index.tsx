@@ -49,7 +49,7 @@ export default component$(() => {
       />
       <FAQs
         title="Frequently Asked Questions"
-        subtitle="Duis turpis dui, fringilla mattis sem nec, fringilla euismod neque. Morbi tincidunt lacus nec tortor scelerisque pulvinar."
+        subtitle="Everything there is to know about our AI training programs."
         highlight="FAQs"
         items={[
           {
