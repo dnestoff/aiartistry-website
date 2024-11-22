@@ -6,34 +6,49 @@ export default component$(() => {
       <div class="grid grid-cols-2 row-gap-8 md:grid-cols-4">
         <div class="text-center md:border-r dark:md:border-slate-500 mb-10 md:mb-0">
           <div class="text-4xl font-bold lg:text-5xl xl:text-6xl text-[#039de1] font-heading">
-            132K
+            64%
           </div>
           <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
-            Downloads
+            of workers unfamiliar 
+          </p>
+          <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
+            with AI tools
           </p>
         </div>
         <div class="text-center md:border-r dark:md:border-slate-500 mb-10 md:mb-0">
           <div class="text-4xl font-bold lg:text-5xl xl:text-6xl text-[#039de1] font-heading">
-            24.8K
+            31%
           </div>
           <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
-            Stars
+            of companies have a
+          </p>
+          <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
+            formal AI strategy
           </p>
         </div>
         <div class="text-center md:border-r dark:md:border-slate-500 font-heading">
           <div class="text-4xl font-bold lg:text-5xl xl:text-6xl text-[#039de1]">
-            10.3K
+            41%
           </div>
           <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
-            Forks
+            of organizations don’t
+          </p>
+          <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
+            collect employee feedback
+          </p>
+          <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
+            on AI tools
           </p>
         </div>
         <div class="text-center">
           <div class="text-4xl font-bold lg:text-5xl xl:text-6xl text-[#039de1] font-heading">
-            48.4K
+            56%
           </div>
           <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
-            Users
+            of workers are proactively
+          </p>
+          <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
+            learning about gen AI
           </p>
         </div>
       </div>
