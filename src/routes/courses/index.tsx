@@ -1,7 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
-import Hero from "~/components/widgets/Hero_Services";
 import Features from "~/components/widgets/Features";
 import Steps from "~/components/widgets/Steps";
 import FAQs from "~/components/widgets/FAQs";
@@ -21,7 +20,6 @@ import { SITE } from "~/config.mjs";
 export default component$(() => {
   return (
     <>
-      <Hero />
       <Features
         highlight="Courses"
         title="What our courses cover"
