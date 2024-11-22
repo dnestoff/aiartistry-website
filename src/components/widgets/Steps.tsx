@@ -7,24 +7,24 @@ const sideImg =
 
 export default component$(() => {
   const stepsData = {
-    title: "Sed ac magna sit amet risus tristique interdum. hac.",
+    title: "Half and full-day workshops tailored to your needs.",
     items: [
       {
-        title: "Step 1",
+        title: "AI Readiness Assessment",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus.",
+          "Understand your current level of AI adoption, specific goals for AI implementation, and identify challenges or concerns.",
         icon: IconStar,
       },
       {
-        title: "Step 2",
+        title: "Targeted AI Workshops",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla.",
+          "Develop a customized programs designed to meet your teams' unique challenges and goals.",
         icon: IconStar,
       },
       {
-        title: "Step 3",
+        title: "Future Proofing",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla.",
+          "Provide content and tools to help and measure the value of future AI initiatives.",
         icon: IconStar,
       },
       {

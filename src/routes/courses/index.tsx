@@ -23,84 +23,67 @@ export default component$(() => {
       <Features
         highlight="Courses"
         title="What our courses cover"
-        subtitle="Master AI essentials in just one hour! This engaging, hands-on course equips your team with the skills and confidence to harness AI effectively and responsibly in the workplace."
+        subtitle="Courses designed to drive innovation, boost confidence, and ensure AI delivers real business value."
         items={[
           {
-            title: "Qwik + Tailwind CSS Integration",
-            description:
-              "A seamless integration between two great frameworks that offer high productivity, performance and versatility.",
-            icon: IconBrandTailwind,
+            title: "AI Strategy for Business",
+            description: "Equip your business to thrive in the age of AI.",
           },
           {
-            title: "Ready-to-use Components",
-            description:
-              "Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...",
-            icon: IconApps,
+            title: "AI Transformation: A People-First Approach",
+            description: "Empower your people for the future of work.",
           },
           {
-            title: "Best Practices",
-            description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.",
+            title: "AI Literacy for Leaders", 
+            description: "Drive AI adoption by understanding its capabilities.",
           },
           {
-            title: "Excellent Page Speed",
-            description:
-              "Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.",
-            icon: IconRocket,
+            title: "Building a Culture of AI Innovation",
+            description: "Unlock the power of AI through collaboration.",
           },
           {
-            title: "Search Engine Optimization (SEO)",
-            description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.",
-            icon: IconBrandGoogle,
-          },
-          {
-            title: "Open to new ideas and contributions",
-            description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.",
-            icon: IconBulb
+            title: "Measuring the Value of AI",
+            description: "Ensure AI initiatives deliver tangible results.",
           },
         ]}
       />
-      <Steps />
       <FAQs
         title="Frequently Asked Questions"
         subtitle="Duis turpis dui, fringilla mattis sem nec, fringilla euismod neque. Morbi tincidunt lacus nec tortor scelerisque pulvinar."
         highlight="FAQs"
         items={[
           {
-            title: "What do I need to start?",
+            title: "What types of AI courses do you offer?",
             description:
-              "Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.",
+              "We offer courses tailored to address key business challenges, including AI basics for beginners, role-specific training, ethical AI practices, and strategies for integrating AI into daily workflows.",
           },
           {
-            title: "How to install the Qwik + Tailwind CSS template?",
+            title: "How are your courses customized for my company's needs?", 
             description:
-              "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+              "Our courses are designed with your goals in mind—whether you want to enhance employee productivity, foster innovation, or ensure ethical AI use, we customize training to align with your industry and workforce.",
           },
           {
-            title: "What's something that you don't understand?",
+            title: "Who should attend these courses?",
             description:
-              "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+              "These courses are ideal for employees at all levels, from non-technical staff to managers and technical teams, ensuring everyone gains the skills and confidence to work effectively with AI.",
           },
           {
-            title: "What's an example of when you changed your mind?",
+            title: "How will these courses benefit my team?",
             description:
-              "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+              "Your team will learn how to seamlessly adopt AI, enhance productivity, embrace innovation, and align with strategic goals, while reducing risks and fostering a positive workplace culture.",
           },
           {
-            title: "What is something that you would like to try again?",
+            title: "What makes your AI courses different?",
             description:
-              "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+              "Our programs emphasize practical, role-specific training combined with actionable insights, focusing on human-AI collaboration and fostering a culture of innovation and ethical responsibility.",
           },
           {
-            title: "If you could only ask one question to each person you meet, what would that question be?",
+            title: "How long are the courses, and what formats are available?",
             description:
-              "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+              "Courses vary in length, from half-day workshops to multi-session programs, and are available in-person or online to fit your company's schedule and preferences.",
           },
         ]}
       />
-      <Stats />
       <CallToAction />
     </>
   );
