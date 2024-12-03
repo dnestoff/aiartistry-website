@@ -22,87 +22,67 @@ export default component$(() => {
   return (
     <>
       <Hero />
+      <Stats />
       <Features
-        highlight="Features"
-        title="What you get with Qwind"
-        subtitle="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae."
+        title="What We Do"
+        subtitle="We specialize in trainings, courses, and workshops designed to accelerate AI adoption across your organization."
         items={[
           {
-            title: "Qwik + Tailwind CSS Integration",
+            title: "Trainings",
             description:
-              "A seamless integration between two great frameworks that offer high productivity, performance and versatility.",
-            icon: IconBrandTailwind,
+              "Our one- and two-hour training programs teach employees to integrate AI into their daily workflows. From fostering innovation to promoting AI champions, equip your workforce with practical habits that boost productivity and confidence with AI.",
+            icon: IconBulb,
           },
           {
-            title: "Ready-to-use Components",
+            title: "Workshops",
             description:
-              "Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...",
-            icon: IconApps,
-          },
-          {
-            title: "Best Practices",
-            description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.",
-          },
-          {
-            title: "Excellent Page Speed",
-            description:
-              "Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.",
+              "Full and half-day workshops tailored to your team's unique challenges. We work with leaderships teams to assess readiness and develop targeted guidance, delivering interactive sessions to accelerate adoption and align with your goals.",
             icon: IconRocket,
           },
           {
-            title: "Search Engine Optimization (SEO)",
+            title: "Courses (Coming Soon)",
             description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.",
-            icon: IconBrandGoogle,
-          },
-          {
-            title: "Open to new ideas and contributions",
-            description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.",
-            icon: IconBulb
+              "Digital courses teach foundational skills, including role-specific prompting, ethical AI practices, and strategies for bringing AI to the workplace.",
+            icon: IconApps,
           },
         ]}
       />
-      <Steps />
       <FAQs
-        title="Frequently Asked Questions"
-        subtitle="Duis turpis dui, fringilla mattis sem nec, fringilla euismod neque. Morbi tincidunt lacus nec tortor scelerisque pulvinar."
-        highlight="FAQs"
+        title="Empower Your Workforce"
+        subtitle="While others focus on your tech, we focus on your people, bridging the gap between potential and real-world impact."
         items={[
           {
-            title: "What do I need to start?",
+            title: "Increase AI Adoption and Usage",
             description:
-              "Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.",
+              "Without equipping employees with guidance and skills, low adoption rates throttle the potential of AI investments.",
           },
           {
-            title: "How to install the Qwik + Tailwind CSS template?",
+            title: "Improve Employee Productivity and Engagement",
             description:
-              "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+              "Free up employees to focus on higher-value work, leading to increased productivity and job satisfaction.",
           },
           {
-            title: "What's something that you don't understand?",
+            title: "Foster a Culture of Innovation and Experimentation",
             description:
-              "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+              "Cultivate a workplace that embraces AI as a tool for innovation and encourages fearless experimentation.",
           },
           {
-            title: "What's an example of when you changed your mind?",
+            title: "Mitigate Risks and Ensure Responsible AI Deployment",
             description:
-              "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+              "Education on ethical considerations, data privacy, and responsible usage minimizes potential risks.",
           },
           {
-            title: "What is something that you would like to try again?",
+            title: "Enhance Business Outcomes and Competitiveness",
             description:
-              "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+              "Every power user of AI delivers a competitive edge in the rapidly evolving digital landscape.",
           },
           {
-            title: "If you could only ask one question to each person you meet, what would that question be?",
+            title: "Drive an Ethical Impact on Workers",
             description:
-              "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+              "Provide employees with confidence that AI exposure is being driven with equity and inclusion in mind.",
           },
         ]}
       />
-      <Stats />
       <CallToAction />
     </>
   );

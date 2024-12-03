@@ -8,11 +8,11 @@ export default component$(() => {
           <div class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none">
             <h2 class="text-4xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
               <span class="text-[#039de1] sm:whitespace-nowrap">
-                Make AI Work for You
+                Ready to transform your workforce?
               </span>
             </h2>
             <p class="text-xl text-gray-600 dark:text-slate-400">
-              Empower your workforce to lead with confidence and <br class="hidden md:inline" />
+              Turn your workforce into AI champions and <br class="hidden md:inline" />
               gain a competitive edge in the AI landscape.
             </p>
 
