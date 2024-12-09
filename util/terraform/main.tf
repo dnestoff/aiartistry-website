@@ -9,6 +9,7 @@ terraform {
   
   backend "s3" {
     # This will be configured via backend config file
+    region = "us-east-1"
   }
 }
 
@@ -123,12 +124,7 @@ resource "aws_cloudfront_distribution" "website" {
   }
 
   # Optional: Custom domain aliases
-  dynamic "aliases" {
-    for_each = var.domain_name != "" ? [var.domain_name] : []
-    content {
-      names = [aliases.value]
-    }
-  }
+  aliases = var.domain_name != "" ? [var.domain_name] : []
 
   restrictions {
     geo_restriction {
