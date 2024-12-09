@@ -43,3 +43,11 @@ lerna-debug.log*
 package-lock.json
 .jampack
 tmp
+
+# Terraform
+*.tfvars
+!terraform.tfvars.example
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
