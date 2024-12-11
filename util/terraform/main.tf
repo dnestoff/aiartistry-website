@@ -75,7 +75,7 @@ resource "aws_s3_bucket_cors_configuration" "website" {
     allowed_headers = ["*"]
     allowed_methods = ["GET", "HEAD"]
     allowed_origins = ["*"]  # For public website
-    expose_headers  = ["ETag"]
+    expose_headers  = ["ETag", "Cache-Control", "Content-Length", "Content-Type"]
     max_age_seconds = 3600
   }
 }
@@ -105,12 +105,10 @@ resource "aws_cloudfront_distribution" "website" {
     target_origin_id       = aws_s3_bucket.website.id
     viewer_protocol_policy = "redirect-to-https"
 
-    forwarded_values {
-      query_string = false
-      cookies {
-        forward = "none"
-      }
-    }
+    # Add compression support
+    compress = true
+
+    cache_policy_id = aws_cloudfront_cache_policy.website_cache.id
 
     min_ttl     = 0
     default_ttl = 3600
@@ -142,6 +140,36 @@ resource "aws_cloudfront_distribution" "website" {
     geo_restriction {
       restriction_type = "none"
     }
+  }
+
+  # Add custom error response for SPA routing
+  custom_error_response {
+    error_code            = 404
+    response_code         = 200
+    response_page_path    = "/index.html"
+    error_caching_min_ttl = 300
+  }
+}
+
+resource "aws_cloudfront_cache_policy" "website_cache" {
+  name        = "${var.project_name}-${var.environment}-cache-policy"
+  comment     = "Cache policy for static website"
+  default_ttl = 3600
+  max_ttl     = 86400
+  min_ttl     = 0
+
+  parameters_in_cache_key_and_forwarded_to_origin {
+    cookies_config {
+      cookie_behavior = "none"
+    }
+    headers_config {
+      header_behavior = "none"
+    }
+    query_strings_config {
+      query_string_behavior = "none"
+    }
+    enable_accept_encoding_brotli = true
+    enable_accept_encoding_gzip   = true
   }
 }
 
