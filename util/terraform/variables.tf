@@ -32,3 +32,35 @@ variable "cloudfront_price_class" {
   type        = string
   default     = "PriceClass_100"  # Use only North America and Europe
 }
+
+# Variables for codepipeline configuration
+variable "github_repo_owner" {
+  description = "GitHub repository owner"
+  type        = string
+}
+
+variable "github_repo_name" {
+  description = "GitHub repository name"
+  type        = string
+}
+
+variable "github_branch" {
+  description = "GitHub branch to use"
+  type        = string
+}
+
+variable "github_token" {
+  description = "GitHub OAuth token"
+  type        = string
+  sensitive   = true
+}
+
+variable "s3_bucket_name" {
+  description = "S3 bucket name for artifacts"
+  type        = string
+}
+
+variable "cloudfront_distribution_id" {
+  description = "CloudFront distribution ID"
+  type        = string
+}

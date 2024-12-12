@@ -173,6 +173,204 @@ resource "aws_cloudfront_cache_policy" "website_cache" {
   }
 }
 
+# CodeBuild IAM Role
+resource "aws_iam_role" "codebuild_role" {
+  name = "codebuild-service-role-${var.environment}"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Principal = {
+          Service = "codebuild.amazonaws.com"
+        }
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy" "codebuild_policy" {
+  name = "codebuild-service-policy-${var.environment}"
+  role = aws_iam_role.codebuild_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:PutObject",
+          "s3:DeleteObject",
+          "s3:GetObject"
+        ]
+        Resource = [
+          "arn:aws:s3:::${var.s3_bucket_name}/*"
+        ]
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "cloudfront:CreateInvalidation"
+        ]
+        Resource = [
+          "arn:aws:cloudfront::${data.aws_caller_identity.current.account_id}:distribution/${var.cloudfront_distribution_id}"
+        ]
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ]
+        Resource = ["*"]
+      }
+    ]
+  })
+}
+
+# CodePipeline IAM Role
+resource "aws_iam_role" "codepipeline_role" {
+  name = "codepipeline-service-role-${var.environment}"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Principal = {
+          Service = "codepipeline.amazonaws.com"
+        }
+      }
+    ]
+  })
+}
+
+# CodePipeline IAM Policy
+resource "aws_iam_role_policy" "codepipeline_policy" {
+  name = "codepipeline-service-policy-${var.environment}"
+  role = aws_iam_role.codepipeline_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:PutObject",
+          "s3:GetObject",
+          "s3:GetObjectVersion",
+          "s3:GetBucketVersioning"
+        ]
+        Resource = [
+          "arn:aws:s3:::${var.s3_bucket_name}",
+          "arn:aws:s3:::${var.s3_bucket_name}/*"
+        ]
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "codebuild:BatchGetBuilds",
+          "codebuild:StartBuild"
+        ]
+        Resource = ["*"]
+      }
+    ]
+  })
+}
+
+# CodeBuild Project
+resource "aws_codebuild_project" "project" {
+  name          = "build-project-${var.environment}"
+  description   = "Build project for ${var.environment}"
+  service_role  = aws_iam_role.codebuild_role.arn
+  
+  artifacts {
+    type = "CODEPIPELINE"
+  }
+  
+  environment {
+    compute_type                = "BUILD_GENERAL1_SMALL"
+    image                      = "aws/codebuild/standard:5.0"
+    type                       = "LINUX_CONTAINER"
+    image_pull_credentials_type = "CODEBUILD"
+    
+    environment_variable {
+      name  = "BUCKET_NAME"
+      value = var.s3_bucket_name
+    }
+    
+    environment_variable {
+      name  = "CLOUDFRONT_ID"
+      value = var.cloudfront_distribution_id
+    }
+  }
+  
+  source {
+    type      = "CODEPIPELINE"
+    buildspec = "buildspec.yml"
+  }
+}
+
+# CodePipeline
+resource "aws_codepipeline" "pipeline" {
+  name     = "pipeline-${var.environment}"
+  role_arn = aws_iam_role.codepipeline_role.arn
+
+  artifact_store {
+    location = var.s3_bucket_name
+    type     = "S3"
+  }
+
+  stage {
+    name = "Source"
+
+    action {
+      name             = "Source"
+      category         = "Source"
+      owner            = "AWS"
+      provider         = "CodeStarSourceConnection"
+      version          = "1"
+      output_artifacts = ["source_output"]
+
+      configuration = {
+        ConnectionArn    = aws_codestarconnections_connection.github.arn
+        FullRepositoryId = "${var.github_repo_owner}/${var.github_repo_name}"
+        BranchName      = var.github_branch
+      }
+    }
+  }
+
+  stage {
+    name = "Build"
+
+    action {
+      name            = "Build"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      input_artifacts = ["source_output"]
+      version         = "1"
+
+      configuration = {
+        ProjectName = aws_codebuild_project.project.name
+      }
+    }
+  }
+}
+
+# GitHub Connection
+resource "aws_codestarconnections_connection" "github" {
+  name          = "github-connection-${var.environment}"
+  provider_type = "GitHub"
+}
+
+# Get current AWS account ID
+data "aws_caller_identity" "current" {}
+
 # Output values
 output "website_bucket_name" {
   value = aws_s3_bucket.website.id
