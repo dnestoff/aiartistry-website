@@ -1,0 +1,35 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - npm install
+      # Add check for successful installation
+      - node -v
+      - npm -v
+  build:
+    commands:
+      - npm run build
+      # Add check for successful build
+      - test -d dist || exit 1
+      - test -f dist/index.html || exit 1
+  post_build:
+    commands:
+      # Add validation before deployment
+      - echo "Validating dist folder structure..."
+      - find dist -type f -exec ls -l {} \;
+      - aws s3 sync dist s3://${BUCKET_NAME} --delete
+      - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_ID} --paths "/*"
+      # Add deployment verification
+      - echo "Verifying S3 upload..."
+      - aws s3 ls s3://${BUCKET_NAME} --recursive
+      - echo "Checking CloudFront invalidation status..."
+      - aws cloudfront list-invalidations --distribution-id ${CLOUDFRONT_ID} --max-items 1
+artifacts:
+  base-directory: dist
+  files:
+    - '**/*'
+cache:
+  paths:
+    - 'node_modules/**/*'
