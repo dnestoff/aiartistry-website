@@ -365,6 +365,7 @@ resource "aws_codepipeline" "pipeline" {
       owner           = "AWS"
       provider        = "CodeBuild"
       input_artifacts = ["source_output"]
+      output_artifacts = ["build_output"]
       version         = "1"
 
       configuration = {
