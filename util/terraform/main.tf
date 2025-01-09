@@ -207,12 +207,14 @@ resource "aws_iam_role_policy" "codebuild_policy" {
           "s3:GetObject"
         ]
         Resource = [
+          "arn:aws:s3:::${var.s3_bucket_name}",
           "arn:aws:s3:::${var.s3_bucket_name}/*"
         ]
       },
       {
         Effect = "Allow"
         Action = [
+          "cloudfront:ListInvalidations",
           "cloudfront:CreateInvalidation"
         ]
         Resource = [
@@ -363,6 +365,7 @@ resource "aws_codepipeline" "pipeline" {
       owner           = "AWS"
       provider        = "CodeBuild"
       input_artifacts = ["source_output"]
+      output_artifacts = ["build_output"]
       version         = "1"
 
       configuration = {
