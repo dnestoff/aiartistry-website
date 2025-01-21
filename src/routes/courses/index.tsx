@@ -2,17 +2,13 @@ import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
 import Features from "~/components/widgets/Features";
-import Steps from "~/components/widgets/Steps";
 import FAQs from "~/components/widgets/FAQs";
-import Stats from "~/components/widgets/Stats";
 import CallToAction from "~/components/widgets/CallToAction";
 
 import { qwikSerialized } from "~/utils/qwikSerialized";
 
-const IconBrandTailwind = qwikSerialized(() => import("../../components/icons/IconBrandTailwind"));
 const IconApps = qwikSerialized(() => import("../../components/icons/IconApps"));
 const IconRocket = qwikSerialized(() => import("../../components/icons/IconRocket"));
-const IconBrandGoogle = qwikSerialized(() => import("../../components/icons/IconBrandGoogle"));
 const IconBulb = qwikSerialized(() => import("../../components/icons/IconBulb"));
 
 import { SITE } from "~/config.mjs";
@@ -28,10 +24,12 @@ export default component$(() => {
           {
             title: "AI Strategy for Business",
             description: "Equip your business to thrive in the age of AI.",
+            icon: IconRocket,
           },
           {
             title: "AI Transformation: A People-First Approach",
             description: "Empower your people for the future of work.",
+            icon: IconApps,
           },
           {
             title: "AI Literacy for Leaders", 
@@ -40,6 +38,7 @@ export default component$(() => {
           {
             title: "Building a Culture of AI Innovation",
             description: "Unlock the power of AI through collaboration.",
+            icon: IconBulb,
           },
           {
             title: "Measuring the Value of AI",
