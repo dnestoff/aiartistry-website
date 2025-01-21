@@ -377,7 +377,7 @@ resource "aws_codepipeline" "pipeline" {
 
 # GitHub Connection
 resource "aws_codestarconnections_connection" "github" {
-  name          = "github-connection-${var.environment}"
+  name          = "github-${var.project_name}"
   provider_type = "GitHub"
 }
 
