@@ -14,6 +14,11 @@ terraform {
 }
 
 provider "aws" {
+  alias  = "us-east-1"
+  region = "us-east-1"
+}
+
+provider "aws" {
   region = var.aws_region
   
   default_tags {
@@ -171,6 +176,20 @@ resource "aws_cloudfront_cache_policy" "website_cache" {
     enable_accept_encoding_brotli = true
     enable_accept_encoding_gzip   = true
   }
+}
+
+# ACM Certificate
+resource "aws_acm_certificate" "domain_certificate" {
+  domain_name               = "*.aiartistry.io"
+  validation_method         = "DNS"
+  subject_alternative_names = ["aiartistry.io", "www.aiartistry.io"]  # Include apex domain and www subdomain
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  # Important: ACM certificates for CloudFront must be in us-east-1
+  provider = aws.us-east-1
 }
 
 # CodeBuild IAM Role
@@ -395,4 +414,16 @@ output "cloudfront_distribution_id" {
 
 output "cloudfront_domain_name" {
   value = aws_cloudfront_distribution.website.domain_name
+}
+
+# Output the DNS validation records
+output "certificate_validation_records" {
+  value = {
+    for dvo in aws_acm_certificate.domain_certificate.domain_validation_options : dvo.domain_name => {
+      name   = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type   = dvo.resource_record_type
+    }
+  }
+  description = "The DNS records needed to validate the ACM certificate. Add these to your GoDaddy DNS settings."
 }
