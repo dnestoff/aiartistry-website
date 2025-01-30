@@ -100,7 +100,7 @@ resource "aws_cloudfront_distribution" "website" {
     custom_origin_config {
       http_port              = 80
       https_port             = 443
-      origin_protocol_policy = "http-only"
+      origin_protocol_policy = "https-only"
       origin_ssl_protocols   = ["TLSv1.2"]
     }
   }
@@ -121,26 +121,14 @@ resource "aws_cloudfront_distribution" "website" {
     max_ttl     = 86400
   }
 
-  # Optional: Configure custom domain
-  dynamic "viewer_certificate" {
-   for_each = var.domain_name != "" ? [1] : []
-   content {
-      acm_certificate_arn      = var.acm_certificate_arn
-      ssl_support_method       = "sni-only"
-      minimum_protocol_version = "TLSv1.2_2021"
-    }
-  }
-
-  # Default certificate if no custom domain
-  dynamic "viewer_certificate" {
-    for_each = var.domain_name == "" ? [1] : []
-    content {
-      cloudfront_default_certificate = true
-    }
+  viewer_certificate {
+    acm_certificate_arn      = var.acm_certificate_arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
 
   # Optional: Custom domain aliases
-  # aliases = var.domain_name != "" ? [var.domain_name] : []
+  aliases = var.domain_name != "" ? [var.domain_name, "www.${var.domain_name}"] : []
 
   restrictions {
     geo_restriction {
