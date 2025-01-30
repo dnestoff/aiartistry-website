@@ -14,6 +14,11 @@ terraform {
 }
 
 provider "aws" {
+  alias  = "us-east-1"
+  region = "us-east-1"
+}
+
+provider "aws" {
   region = var.aws_region
   
   default_tags {
@@ -82,10 +87,11 @@ resource "aws_s3_bucket_cors_configuration" "website" {
 
 # CloudFront distribution
 resource "aws_cloudfront_distribution" "website" {
-  enabled             = true
-  is_ipv6_enabled    = true
+  depends_on = [aws_acm_certificate_validation.cert_validation]
+  enabled = true
+  is_ipv6_enabled = true
   default_root_object = "index.html"
-  price_class        = var.cloudfront_price_class
+  price_class = var.cloudfront_price_class
 
   origin {
     domain_name = aws_s3_bucket_website_configuration.website.website_endpoint
@@ -94,7 +100,7 @@ resource "aws_cloudfront_distribution" "website" {
     custom_origin_config {
       http_port              = 80
       https_port             = 443
-      origin_protocol_policy = "http-only"
+      origin_protocol_policy = "https-only"
       origin_ssl_protocols   = ["TLSv1.2"]
     }
   }
@@ -115,26 +121,14 @@ resource "aws_cloudfront_distribution" "website" {
     max_ttl     = 86400
   }
 
-  # Optional: Configure custom domain
-  dynamic "viewer_certificate" {
-    for_each = var.domain_name != "" ? [1] : []
-    content {
-      acm_certificate_arn      = var.acm_certificate_arn
-      ssl_support_method       = "sni-only"
-      minimum_protocol_version = "TLSv1.2_2021"
-    }
-  }
-
-  # Default certificate if no custom domain
-  dynamic "viewer_certificate" {
-    for_each = var.domain_name == "" ? [1] : []
-    content {
-      cloudfront_default_certificate = true
-    }
+  viewer_certificate {
+    acm_certificate_arn      = var.acm_certificate_arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
 
   # Optional: Custom domain aliases
-  aliases = var.domain_name != "" ? [var.domain_name] : []
+  aliases = var.domain_name != "" ? [var.domain_name, "www.${var.domain_name}"] : []
 
   restrictions {
     geo_restriction {
@@ -171,6 +165,30 @@ resource "aws_cloudfront_cache_policy" "website_cache" {
     enable_accept_encoding_brotli = true
     enable_accept_encoding_gzip   = true
   }
+}
+
+# ACM Certificate
+resource "aws_acm_certificate" "domain_certificate" {
+  domain_name               = var.domain_name
+  validation_method         = "DNS"
+  subject_alternative_names = [
+    "*.${var.domain_name}", 
+    "www.${var.domain_name}"
+  ]  # Include apex domain and www subdomain
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  # Important: ACM certificates for CloudFront must be in us-east-1
+  provider = aws.us-east-1
+}
+
+# Resource for certificate validation
+resource "aws_acm_certificate_validation" "cert_validation" {
+  provider                = aws.us-east-1
+  certificate_arn         = aws_acm_certificate.domain_certificate.arn
+  validation_record_fqdns = [for record in aws_acm_certificate.domain_certificate.domain_validation_options : record.resource_record_name]
 }
 
 # CodeBuild IAM Role
@@ -395,4 +413,16 @@ output "cloudfront_distribution_id" {
 
 output "cloudfront_domain_name" {
   value = aws_cloudfront_distribution.website.domain_name
+}
+
+# Output the DNS validation records
+output "certificate_validation_records" {
+  value = {
+    for dvo in aws_acm_certificate.domain_certificate.domain_validation_options : dvo.domain_name => {
+      name   = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type   = dvo.resource_record_type
+    }
+  }
+  description = "The DNS records needed to validate the ACM certificate. Add these to your GoDaddy DNS settings."
 }
