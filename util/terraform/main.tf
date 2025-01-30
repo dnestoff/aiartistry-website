@@ -87,10 +87,11 @@ resource "aws_s3_bucket_cors_configuration" "website" {
 
 # CloudFront distribution
 resource "aws_cloudfront_distribution" "website" {
-  enabled             = true
-  is_ipv6_enabled    = true
+  depends_on = [aws_acm_certificate_validation.cert_validation]
+  enabled = true
+  is_ipv6_enabled = true
   default_root_object = "index.html"
-  price_class        = var.cloudfront_price_class
+  price_class = var.cloudfront_price_class
 
   origin {
     domain_name = aws_s3_bucket_website_configuration.website.website_endpoint
@@ -122,8 +123,8 @@ resource "aws_cloudfront_distribution" "website" {
 
   # Optional: Configure custom domain
   dynamic "viewer_certificate" {
-    for_each = var.domain_name != "" ? [1] : []
-    content {
+   for_each = var.domain_name != "" ? [1] : []
+   content {
       acm_certificate_arn      = var.acm_certificate_arn
       ssl_support_method       = "sni-only"
       minimum_protocol_version = "TLSv1.2_2021"
@@ -139,7 +140,7 @@ resource "aws_cloudfront_distribution" "website" {
   }
 
   # Optional: Custom domain aliases
-  aliases = var.domain_name != "" ? [var.domain_name] : []
+  # aliases = var.domain_name != "" ? [var.domain_name] : []
 
   restrictions {
     geo_restriction {
@@ -180,9 +181,12 @@ resource "aws_cloudfront_cache_policy" "website_cache" {
 
 # ACM Certificate
 resource "aws_acm_certificate" "domain_certificate" {
-  domain_name               = "*.aiartistry.io"
+  domain_name               = var.domain_name
   validation_method         = "DNS"
-  subject_alternative_names = ["aiartistry.io", "www.aiartistry.io"]  # Include apex domain and www subdomain
+  subject_alternative_names = [
+    "*.${var.domain_name}", 
+    "www.${var.domain_name}"
+  ]  # Include apex domain and www subdomain
 
   lifecycle {
     create_before_destroy = true
@@ -190,6 +194,13 @@ resource "aws_acm_certificate" "domain_certificate" {
 
   # Important: ACM certificates for CloudFront must be in us-east-1
   provider = aws.us-east-1
+}
+
+# Resource for certificate validation
+resource "aws_acm_certificate_validation" "cert_validation" {
+  provider                = aws.us-east-1
+  certificate_arn         = aws_acm_certificate.domain_certificate.arn
+  validation_record_fqdns = [for record in aws_acm_certificate.domain_certificate.domain_validation_options : record.resource_record_name]
 }
 
 # CodeBuild IAM Role
