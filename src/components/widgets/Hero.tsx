@@ -1,8 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { Image } from "@unpic/qwik";
 
-const coverImage =
-  "../src/assets/images/hero_home_1200x1200.png";
+const coverImage = "/images/hero_home_1200x1200.png";
 
 export default component$(() => {
   return (
