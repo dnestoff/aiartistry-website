@@ -167,6 +167,37 @@ resource "aws_cloudfront_cache_policy" "website_cache" {
   }
 }
 
+<<<<<<< HEAD
+=======
+# Route 53
+resource "aws_route53_record" "root_a" {
+  zone_id = var.route53_zone_id
+  name    = var.domain_name
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.website.domain_name
+    zone_id                = aws_cloudfront_distribution.website.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+# WWW subdomain A record
+resource "aws_route53_record" "www_a" {
+  zone_id = var.route53_zone_id
+  name    = "www.${var.domain_name}"
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.website.domain_name
+    zone_id                = aws_cloudfront_distribution.website.hosted_zone_id
+    evaluate_target_health = false
+  }
+
+  depends_on = [aws_route53_record.root_a]
+}
+
+>>>>>>> 19ff7ad (Terraform route53 create zone records (#25))
 # ACM Certificate
 resource "aws_acm_certificate" "domain_certificate" {
   domain_name               = var.domain_name
@@ -415,7 +446,10 @@ output "cloudfront_domain_name" {
   value = aws_cloudfront_distribution.website.domain_name
 }
 
+<<<<<<< HEAD
 # Output the DNS validation records
+=======
+>>>>>>> 19ff7ad (Terraform route53 create zone records (#25))
 output "certificate_validation_records" {
   value = {
     for dvo in aws_acm_certificate.domain_certificate.domain_validation_options : dvo.domain_name => {
@@ -424,5 +458,9 @@ output "certificate_validation_records" {
       type   = dvo.resource_record_type
     }
   }
+<<<<<<< HEAD
   description = "The DNS records needed to validate the ACM certificate. Add these to your GoDaddy DNS settings."
+=======
+  description = "The DNS records needed to validate the ACM certificate. Add these to your DNS settings."
+>>>>>>> 19ff7ad (Terraform route53 create zone records (#25))
 }

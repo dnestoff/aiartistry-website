@@ -22,6 +22,7 @@ export default component$(() => {
         subtitle="Courses designed to drive innovation, boost confidence, and ensure AI delivers real business value."
         items={[
           {
+<<<<<<< HEAD
             title: "Greenfield thinking with AI ",
             description: "Equip everyone in your org to strategize to new and unencumbered possibilities.",
             icon: IconRocket,
@@ -34,6 +35,24 @@ export default component$(() => {
           {
             title: "Building a Culture of AI Innovation",
             description: "Unlock the power of AI through upskilling, documenting, and collaboration.",
+=======
+            title: "AI Strategy for Business",
+            description: "Equip your business to thrive in the age of AI.",
+            icon: IconRocket,
+          },
+          {
+            title: "AI Transformation: A People-First Approach",
+            description: "Empower your people for the future of work.",
+            icon: IconApps,
+          },
+          {
+            title: "AI Literacy for Leaders", 
+            description: "Drive AI adoption by understanding its capabilities.",
+          },
+          {
+            title: "Building a Culture of AI Innovation",
+            description: "Unlock the power of AI through collaboration.",
+>>>>>>> 19ff7ad (Terraform route53 create zone records (#25))
             icon: IconBulb,
           },
           {
