@@ -2,8 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { Image } from "@unpic/qwik";
 
 import IconStar from "~/components/icons/IconStar";
-const sideImg =
-  "https://images.unsplash.com/photo-1583195648430-18b2681307e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80";
+const sideImg = "/images/steps.png";
 
 export default component$(() => {
   const stepsData = {
@@ -77,7 +76,7 @@ export default component$(() => {
               </div>
             ))}
         </div>
-        <div class="relative">
+        <div class="relative hidden md:block">
           {typeof image !== "undefined" && (
             <Image
               layout="constrained"
@@ -85,7 +84,7 @@ export default component$(() => {
               width={532}
               height={704}
               alt={image.alt}
-              class="inset-0 w-full rounded-md bg-gray-500 object-cover object-top shadow-lg dark:bg-slate-700 md:absolute md:h-full"
+              class="inset-0 w-full rounded-md object-cover object-top md:absolute md:h-full"
               breakpoints={[320, 480, 640, 1024]}
             />
           )}

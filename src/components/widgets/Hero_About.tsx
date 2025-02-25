@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { Image } from "@unpic/qwik";
 
-const coverImage = "../public/images/Dave_headshot_Simplifya_1500x1500.jpeg";
+const coverImage = "/images/Dave_headshot_Simplifya_1500x1500.jpeg";
 
 export default component$(() => {
   return (
@@ -32,7 +32,7 @@ export default component$(() => {
               layout="constrained"
               width={493}
               height={616}
-              alt="Qwind Hero Image (Cool dog)"
+              alt="AI Artistry - Dave Nestoff Headshot"
               class="mx-auto lg:mr-0 w-full drop-shadow-2xl rounded-md"
               priority={true}
               breakpoints={[320, 480, 640, 768, 1024]}
