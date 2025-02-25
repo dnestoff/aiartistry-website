@@ -64,3 +64,8 @@ variable "cloudfront_distribution_id" {
   description = "CloudFront distribution ID"
   type        = string
 }
+
+variable "route53_zone_id" {
+  type        = string
+  description = "ID of the existing Route 53 hosted zone"
+}
