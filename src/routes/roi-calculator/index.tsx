@@ -168,7 +168,7 @@ export default component$(() => {
           <div class="bg-white rounded-lg shadow p-6 col-span-2">
             <h2 class="text-2xl font-semibold text-gray-900 mb-6">ROI Analysis</h2>
             
-            <div class="space-y-6">
+            <div class="grid grid-cols-2 gap-6">
               <div class="bg-blue-50 p-4 rounded-lg">
                 <h3 class="text-lg font-medium text-blue-900 mb-2">Annual Hours Saved</h3>
                 <p class="text-3xl font-bold text-blue-600">
