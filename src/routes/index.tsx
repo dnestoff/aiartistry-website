@@ -4,7 +4,6 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import Hero from "~/components/widgets/Hero";
 import Features from "~/components/widgets/Features";
 import FAQs from "~/components/widgets/FAQs";
-import Stats from "~/components/widgets/Stats";
 import CallToAction from "~/components/widgets/CallToAction";
 
 import { qwikSerialized } from "~/utils/qwikSerialized";
@@ -19,7 +18,6 @@ export default component$(() => {
   return (
     <>
       <Hero />
-      <Stats />
       <Features
         title="What We Do"
         subtitle="We specialize in trainings, courses, and workshops designed to accelerate AI adoption across your organization."
