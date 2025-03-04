@@ -43,9 +43,9 @@ export default component$(() => {
           title="10X Copywriting with AI"
           subtitle="Learn proven systems to write 10X faster while maintaining quality"
           items={[
+            { text: "Scale content production 10X without sacrificing quality" },
             { text: "Speed techniques that cut drafting time by 90%" },
-            { text: "Includes ChatGPT mastery, CRAFT framework, and speed techniques" },
-            { text: "Generate 50+ headlines in seconds, not hours" },
+            { text: "Prompting techniques and systems for nailing your brand voice" },
             { text: "Generate 50+ headlines in seconds, not hours" }
           ]}
         />
@@ -54,19 +54,29 @@ export default component$(() => {
           subtitle="Transform your research capabilities with practical AI tools and frameworks"
           items={[
             { text: "Reduce research time from days to hours" },
-            { text: "Prerequisites required" },
-            { text: "Proven research prompts and data synthesis techniques" },
-            { text: "Generate 50+ headlines in seconds, not hours" }
+            { text: "Individualized research techniques with AI" },
+            { text: "Proven prompts for data synthesis and template creation" },
+            { text: "Tactics and models for validating research output" }
           ]}
         />
         <Training
           title="Enhanced Brainstorming with AI"
-          subtitle="Transform your team's ideation process."
+          subtitle="Transform your team's ideation process"
           items={[
-            { text: "Reduce research time from days to hours" },
-            { text: "Prerequisites required" },
-            { text: "Proven research prompts and data synthesis techniques" },
-            { text: "Generate 50+ headlines in seconds, not hours" }
+            { text: "Generate 3x more innovative ideas in half the time" },
+            { text: "Identify and incubate raw concepts into business-relevant ideas" },
+            { text: "Practical prompts for finding greenfield opportunities" },
+            { text: "Develop facilitation skills for collaborative brainstorming" }
+          ]}
+        />
+        <Training
+          title="Developing Your AI Champions"
+          subtitle="Turn your early adopters into AI evangelists"
+          items={[
+            { text: "Train the trainer fundamentals for AI adoption" },
+            { text: "Equip experts to help evaluate individual ROI" },
+            { text: "5 essential skills every AI champion needs" },
+            { text: "Equipping team members for practical AI tool evaluation" }
           ]}
         />
       </div>
