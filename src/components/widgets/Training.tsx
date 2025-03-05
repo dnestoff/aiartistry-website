@@ -5,6 +5,7 @@ interface Item {
   title?: string;
   description?: string;
   icon?: any;
+  text?: string;
   classes?: Record<string, string>;
 }
 
