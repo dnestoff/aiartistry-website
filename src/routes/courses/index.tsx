@@ -22,54 +22,45 @@ export default component$(() => {
         subtitle="Courses designed to drive innovation, boost confidence, and ensure AI delivers real business value."
         items={[
           {
-            title: "AI Strategy for Business",
-            description: "Equip your business to thrive in the age of AI.",
+            title: "Greenfield thinking with AI ",
+            description: "Equip everyone in your org to strategize to new and unencumbered possibilities.",
             icon: IconRocket,
           },
           {
-            title: "AI Transformation: A People-First Approach",
-            description: "Empower your people for the future of work.",
+            title: "How to Be an AI Transformationist",
+            description: "The most valuable employee is the one who can teach AI to the rest.",
             icon: IconApps,
           },
           {
-            title: "AI Literacy for Leaders", 
-            description: "Drive AI adoption by understanding its capabilities.",
-          },
-          {
             title: "Building a Culture of AI Innovation",
-            description: "Unlock the power of AI through collaboration.",
+            description: "Unlock the power of AI through upskilling, documenting, and collaboration.",
             icon: IconBulb,
           },
           {
             title: "Measuring the Value of AI",
-            description: "Ensure AI initiatives deliver tangible results.",
+            description: "The best strategies, frameworks and content to help your team capture the value of AI.",
           },
         ]}
       />
       <FAQs
         title="Frequently Asked Questions"
-        subtitle="Everything there is to know about our AI training programs."
+        subtitle="Everything there is to know about our AI training courses."
         highlight="FAQs"
         items={[
           {
             title: "What types of AI courses do you offer?",
             description:
-              "We offer courses tailored to address key business challenges, including AI basics for beginners, role-specific training, ethical AI practices, and strategies for integrating AI into daily workflows.",
+              "We offer courses tailored to addressing key role and capabilities challenges, including AI basics, role-specific training, and strategies for integrating AI into daily workflows.",
           },
           {
             title: "How are your courses customized for my company's needs?", 
             description:
-              "Our courses are designed with your goals in mind—whether you want to enhance employee productivity, foster innovation, or ensure ethical AI use, we customize training to align with your industry and workforce.",
+              "Our courses are designed with your industry and workforce in mind. A foundation of all courses is to enhance employee productivity and foster innovation.",
           },
           {
             title: "Who should attend these courses?",
             description:
-              "These courses are ideal for employees at all levels, from non-technical staff to managers and technical teams, ensuring everyone gains the skills and confidence to work effectively with AI.",
-          },
-          {
-            title: "How will these courses benefit my team?",
-            description:
-              "Your team will learn how to seamlessly adopt AI, enhance productivity, embrace innovation, and align with strategic goals, while reducing risks and fostering a positive workplace culture.",
+              "These courses are ideal for employees at all levels, from non-technical staff to managers and technical teams, ensuring everyone gains the confidence to work effectively with AI.",
           },
           {
             title: "What makes your AI courses different?",
@@ -77,9 +68,9 @@ export default component$(() => {
               "Our programs emphasize practical, role-specific training combined with actionable insights, focusing on human-AI collaboration and fostering a culture of innovation and ethical responsibility.",
           },
           {
-            title: "How long are the courses, and what formats are available?",
+            title: "How will these courses benefit my team?",
             description:
-              "Courses vary in length, from half-day workshops to multi-session programs, and are available in-person or online to fit your company's schedule and preferences.",
+              "Your team will learn how to seamlessly adopt AI in their unique workflows, enhancing productivity while helping them embrace their enhanced roles as strategists. Organizations also see reduced risks positive effects on workplace culture.",
           },
         ]}
       />

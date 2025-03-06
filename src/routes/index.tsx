@@ -25,20 +25,35 @@ export default component$(() => {
           {
             title: "Trainings",
             description:
-              "Our one- and two-hour training programs teach employees to integrate AI into their daily workflows. From fostering innovation to promoting AI champions, equip your workforce with practical habits that boost productivity and confidence with AI.",
+              "Our one- and two-hour training programs teach employees to integrate AI into their daily workflows. From fostering innovation to promoting AI champions, equip your workforce with practical habits that boost productivity and confidence with AI. <br><a href='/trainings'><strong> >> Learn More</strong></a>",
             icon: IconBulb,
+            button: {
+              text: "Explore Trainings",
+              link: '/trainings',
+              type: 'secondary', // Changed button type to 'secondary'
+            },
           },
           {
             title: "Workshops",
             description:
-              "Full and half-day workshops tailored to your team's unique challenges. We work with leaderships teams to assess readiness and develop targeted guidance, delivering interactive sessions to accelerate adoption and align with your goals.",
+              "Full and half-day workshops tailored to your team's unique challenges. We work with leaderships teams to assess readiness and develop targeted guidance, delivering interactive sessions to accelerate adoption and align with your goals. <br><a href='/workshops'><strong> >> Learn More</strong></a>",
             icon: IconRocket,
+            button: {
+              text: "Discover Workshops",
+              link: '/workshops',
+              type: 'secondary', // Changed button type to 'secondary'
+            },
           },
           {
             title: "Courses (Coming Soon)",
             description:
-              "Digital courses teach foundational skills, including role-specific prompting, ethical AI practices, and strategies for bringing AI to the workplace.",
+              "Digital courses teach foundational skills, including role-specific prompting, ethical AI practices, and strategies for bringing AI to the workplace. <br><a href='/courses'><strong> >> Learn More</strong></a>",
             icon: IconApps,
+            button: {
+              text: "View Courses",
+              link: '/courses',
+              type: 'secondary', // Changed button type to 'secondary'
+            },
           },
         ]}
       />

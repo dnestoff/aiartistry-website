@@ -8,7 +8,7 @@ export default component$(() => {
           <div class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none">
             <h2 class="text-4xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
               <span class="text-[#039de1] sm:whitespace-nowrap">
-                Ready to transform your workforce?
+                Ready to transform?
               </span>
             </h2>
             <p class="text-xl text-gray-600 dark:text-slate-400">
