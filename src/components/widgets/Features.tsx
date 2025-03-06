@@ -10,6 +10,11 @@ interface Item {
   description?: string;
   icon?: any;
   classes?: Record<string, string>;
+  button?: {
+    text: string;
+    link: string;
+    type?: 'primary' | 'secondary';
+  };
 }
 
 interface Props {
@@ -23,10 +28,11 @@ interface Props {
 }
 
 export default component$((props: Props) => {
-  const { id, title = "", subtitle = "", highlight = "", items = [], classes = {}, isDark = false } = props;
+  const { id, title = "", subtitle = "", highlight = "", items = [], isDark = false, classes = {} } = props;
 
   return (
     <section class="relative scroll-mt-16" {...(id ? { id } : {})}>
+
       <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">
         <slot name="bg">
           <div class={twMerge("absolute inset-0", isDark ? "bg-dark dark:bg-transparent" : "")}></div>
@@ -41,7 +47,14 @@ export default component$((props: Props) => {
       >
         <Headline title={title} subtitle={subtitle} highlight={highlight} classes={classes?.headline} />
         <ItemGrid
-          items={items}
+          items={items.map(item => ({
+            ...item,
+            button: item.button ? {
+              ...item.button,
+              classes: "mt-4 inline-block bg-primary-500 dark:bg-primary-700 text-white py-2 px-4 rounded hover:bg-primary-600 dark:hover:bg-primary-800 transition duration-300",
+              type: item.button.type // Set button type to the type passed in the item
+            } : undefined
+          }))}
           defaultIcon={IconStar}
           classes={{
             container: "md:grid-cols-2",
