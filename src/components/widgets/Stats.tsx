@@ -20,7 +20,7 @@ export default component$(() => {
             31%
           </div>
           <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
-            of companies have a
+            of companies have
           </p>
           <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
             formal AI strategy
@@ -31,10 +31,10 @@ export default component$(() => {
             41%
           </div>
           <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
-            of organizations don’t
+            of orgs don’t
           </p>
           <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
-            collect employee feedback
+            collect feedback
           </p>
           <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
             on AI tools
@@ -45,10 +45,10 @@ export default component$(() => {
             56%
           </div>
           <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
-            of workers are proactively
+            of workers proactively
           </p>
           <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
-            learning about gen AI
+            learn about gen AI
           </p>
         </div>
       </div>
