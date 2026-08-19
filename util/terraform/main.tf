@@ -8,7 +8,8 @@ terraform {
   }
   
   backend "s3" {
-    # This will be configured via backend config file
+    bucket = "aiartistry-website-terraform-state"
+    key    = "aiartistry-website-terraform-state"
     region = "us-east-1"
   }
 }
@@ -87,7 +88,6 @@ resource "aws_s3_bucket_cors_configuration" "website" {
 
 # CloudFront distribution
 resource "aws_cloudfront_distribution" "website" {
-  depends_on = [aws_acm_certificate_validation.cert_validation]
   enabled = true
   is_ipv6_enabled = true
   default_root_object = "index.html"
@@ -121,10 +121,13 @@ resource "aws_cloudfront_distribution" "website" {
     max_ttl     = 86400
   }
 
-  viewer_certificate {
-    acm_certificate_arn      = var.acm_certificate_arn
-    ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1.2_2021"
+  dynamic "viewer_certificate" {
+    for_each = var.domain_name != "" ? [1] : []
+    content {
+      acm_certificate_arn      = aws_acm_certificate_validation.website.certificate_arn
+      ssl_support_method       = "sni-only"
+      minimum_protocol_version = "TLSv1.2_2021"
+    }
   }
 
   # Optional: Custom domain aliases
@@ -213,11 +216,11 @@ resource "aws_acm_certificate" "domain_certificate" {
 }
 
 # Resource for certificate validation
-resource "aws_acm_certificate_validation" "cert_validation" {
-  provider                = aws.us-east-1
-  certificate_arn         = aws_acm_certificate.domain_certificate.arn
-  validation_record_fqdns = [for record in aws_acm_certificate.domain_certificate.domain_validation_options : record.resource_record_name]
-}
+# resource "aws_acm_certificate_validation" "cert_validation" {
+#   provider                = aws.us-east-1
+#   certificate_arn         = aws_acm_certificate.domain_certificate.arn
+#   validation_record_fqdns = [for record in aws_acm_certificate.domain_certificate.domain_validation_options : record.resource_record_name]
+# }
 
 # CodeBuild IAM Role
 resource "aws_iam_role" "codebuild_role" {
