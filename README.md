@@ -198,3 +198,115 @@ Initially created by [onWidget](https://onwidget.com) and maintained by a commun
 ## License
 
 **Qwind** is licensed under the MIT license — see the [LICENSE](https://github.com/onwidget/qwind/blob/main/LICENSE.md) file for details.
+
+# AI Music Capabilities Quadrant – Customization Prompts & Documentation
+
+This README collects all the prompts and instructions used to update and customize the AI Music Capabilities Quadrant HTML file. Use these as a reference for reusing or adapting the same modifications on another HTML file.
+
+---
+
+## 1. Updating Plotted Capabilities
+**Prompt:**
+> Please pull me a list of all of the items plotted within my quadrant grid (e.g. "MIDI humanization"). I want the complete list of them added to a table format with the item in COLUMN A, and then the following other columns: "Creativity", "Authenticity", Category.
+
+---
+
+## 2. Axis Label Explanations
+**Prompt:**
+> Given my quadrant design and results, please write me two paragraphs explaining the axes for "Creativity" and "Authenticity". Get into detail about what these mean and what high/low signify for us.
+
+---
+
+## 3. Color Palette Customization
+**Prompt:**
+> How can I adjust the color palette to use the colors for my theme:
+> - Background Color: #3c3a37
+> - Text accent color: #ff9f05
+> - Text color: #ffffff
+> - Background accent color: #039de1
+
+---
+
+## 4. Changing Quadrant Background Color
+**Prompt:**
+> Please change the background color of my quadrant to white.
+
+---
+
+## 5. Adding/Removing Capabilities
+**Prompt:**
+> Please remove the following capabilities from both sections of this diagram:
+> * Audience analytics
+> * Revenue optimization
+
+**Prompt:**
+> Please add the following 12 items to both sections. And list out capabilities in their respective categories (e.g. "### Idea capture & transformation") in the lower section. You can ignore the term definitions.
+> -- Items to add START --
+> (List of new capabilities and categories)
+> -- Items to add END --
+
+**Prompt:**
+> Please remove all of the following items from both the top and bottom. This should be everything in the "Business and Analytics" category:
+> (List of items)
+
+---
+
+## 6. Recategorizing and Updating Data
+**Prompt:**
+> Please update my data to recategorize my capabilities as well as update some of the x and y axis values. Here's the new data:
+> -- New data START --
+> (New categories and capabilities with A/C values)
+> -- New data END --
+
+---
+
+## 7. Axis Label and Grid Adjustments
+**Prompt:**
+> Please update my grid so that it shows Creativity on the x axis (the same way it currently shows "Authenticity")
+
+**Prompt:**
+> Please adjust the CSS of my x-axis-label so that it shows at the bottom center of my quadrant container.
+
+**Prompt:**
+> The label the "Creativity" is not appearing in the quadrant currently.
+
+**Prompt:**
+> This will ensure the label is always visible just INSIDE the grid.
+
+**Prompt:**
+> Now please adjust the y-axis-label to have the same margin from the left side of the grid that Creativity has from the bottom.
+
+**Prompt:**
+> Please reduce the distance between "Authenticity" and the left wall of the grid.
+
+---
+
+## 8. Updating Specific Capabilities
+**Prompt:**
+> Please update the following capabilities in both the top and bottom section:
+> -- capabilities START --
+> (List of updated capabilities and values)
+> -- capabilities END --
+
+---
+
+## 9. Category Definitions
+**Prompt:**
+> Can you please pull me a list of all of the categories for my capabilities. Please also come up with a rock-solid definition of what each category refers to in the music making process. Each definition should be 40 words MAX.
+
+---
+
+## 10. Adding a Logo SVG
+**Prompt:**
+> Please add the following SVG to my file. It's my logo and it should be placed next to the title ("AI in Music Production").
+
+---
+
+## Usage
+- Copy and adapt these prompts as needed for your own HTML/CSS/JS music quadrant or similar data visualization projects.
+- For each section, replace the example data with your own as needed.
+- Use the prompts as instructions for an AI assistant or as a checklist for manual editing.
+
+---
+
+**Tip:** For best results, keep your data and categories organized, and always back up your HTML file before making bulk changes.
